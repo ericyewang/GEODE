@@ -1,4 +1,9 @@
 function [pred_summary,pred_sample] = GEODE_predict(y,Lambda,mu,InD,u,sigmaS)
+% Prediction based on GEODE
+% y: the data matrix to be completed, with the missing entries waiting to
+% be predicted.
+% Lambda, mu: Geometric summaries obtained from GEODE
+% InD, u, sigmaS: posterior samples from GEODE
 %% Preparation
 [N,D] = size(y); d = size(Lambda,2);
 T = length(sigmaS);

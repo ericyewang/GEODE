@@ -1,4 +1,5 @@
 function [InD,adapt,u,tau,sigmaS,Lambda,mu] = GEODE_root(y,dim,opt)
+% fit GEODE on dataset with no missing data
 %% Sufficient Statistics
 mu = mean(y)';
 y_c = bsxfun(@minus,y,mu');
@@ -19,6 +20,10 @@ end
 u      = ones(d,T)/2;
 tau    = ones(d,T);
 sigmaS = ones(T,1);
+for i = 1:d
+    tau(i,i) = rexptrunc(a,[1,inf]);
+end
+sigmaS(1) = 1/gamrnd(a_sigma,1/b_sigma);
 %% MCMC
 InDtmp = 1:d;
 for iter = 2:T

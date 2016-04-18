@@ -1,5 +1,5 @@
 function u = generateU_root(Z,SIGMAS,N,TAU,IND,U_p)
-%%
+% Update u
 u = U_p;
 prodTau     = cumprod(TAU(IND));
 u(IND) = gamrndtruncated(prodTau+N/2,1+sum(Z(:,...

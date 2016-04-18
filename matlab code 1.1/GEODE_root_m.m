@@ -1,4 +1,5 @@
 function [InD,adapt,u,tau,sigmaS,Lambda,mu,id_m,pos_m,yms] = GEODE_root_m(y,dim,opt)
+% fit GEODE on dataset with missing data
 %% Prepraration
 nb = opt(1); nc = opt(2); tol = opt(3);
 a = opt(4); a_sigma = opt(5); b_sigma = opt(6);
@@ -38,6 +39,10 @@ u      = ones(d,T)/2;
 tau    = ones(d,T);
 sigmaS = ones(T,1);
 yms = cell(T,1);
+for i = 1:d
+    tau(i,i) = rexptrunc(a,[1,inf]);
+end
+sigmaS(1) = 1/gamrnd(a_sigma,1/b_sigma);
 %% MCMC
 InDtmp = 1:d;
 for iter = 2:T

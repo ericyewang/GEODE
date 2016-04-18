@@ -1,5 +1,6 @@
 function inclu = inclusProb(d,IND,ADA,T,varargin)
-% Compute the inclusion probability of each dimension
+% Compute the proportion of inclusion of each dimension with all iterations
+% where adaptation takes place.
 %% arguments
 numvarargs = length(varargin);
 if numvarargs > 2

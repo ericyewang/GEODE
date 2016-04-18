@@ -1,6 +1,5 @@
 function y_m = GEODE_impute(U,SIGMAS,LAMBDA,MU,AA,Z,id_m,pos_m,IND,iscell)
-% when the number of missing features is small (<=50)
-% For succinctness, the users allowed to choose cell or vector as outputs
+% missing data imputation
 d = size(LAMBDA,2);
 SIG = (1./U-1)*SIGMAS;
 SIG(setdiff(1:d,IND)) = zeros(d-length(IND),1);

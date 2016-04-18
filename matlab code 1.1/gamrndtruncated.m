@@ -1,5 +1,8 @@
 function u = gamrndtruncated(A,B,Range)
-
+% tuncated gamma random number generator
+% A: shape parameter(s)
+% B: rate parameter(s)
+% Range: Range(1) is the lower bound and Range(2) is the upper bound
 smallvalue = 1e-8;
 a1 = Range(1); a2 = Range(2);
 cdf1 = gamcdf(repmat(a1,[length(A),1]),A,1./B);

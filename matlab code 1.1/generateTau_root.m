@@ -1,5 +1,5 @@
 function t = generateTau_root(U,a,IND,TAU_p)
-%%
+% Update tau
 t = TAU_p;
 temp = 0;
 for dim = IND(end:-1:1)
