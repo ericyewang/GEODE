@@ -1,4 +1,4 @@
-function [InD,adapt,u,tau,sigmaS,Lambda,mu,id_m,pos_m,yms] = GEODE_root_m(y,dim,opt)
+function [InD,adapt,u,tau,sigmaS,Lambda,mu,id_m,pos_m,yms] = GEODE_root_m(y,dim,opt,fast)
 % fit GEODE on dataset with missing data
 %% Prepraration
 nb = opt(1); nc = opt(2); tol = opt(3);
@@ -19,7 +19,11 @@ end
 y_complete = y(setdiff(1:N,id_m),:);
 mu = mean(y_complete)';
 y_c = bsxfun(@minus,y_complete,mu');
-[Lambda,S,~] = randPCA(y_c',d);
+if fast
+    [Lambda,~,~] = randPCA(y_c',dim);
+else
+    [Lambda,~,~] = svd(y_c','econ');
+end
 % 3. Store Sufficient Statistics
 fun1 = @(n) sum((y(n,~isnan(y(n,:)))-mu(~isnan(y(n,:)))').^2);
 YY = arrayfun(fun1,1:N)';

@@ -27,7 +27,7 @@ Z = arrayfun(fun2,1:N, 'UniformOutput',0);
 Z = cat(1,Z{:});
 AA = zeros(d,d,length(id_m));
 for k = 1:length(id_m)
-    AA(:,:,k) = Lambda(setdiff(1:D,pos_m{i}),:)'*Lambda(setdiff(1:D,pos_m{i}),:);
+    AA(:,:,k) = Lambda(setdiff(1:D,pos_m{k}),:)'*Lambda(setdiff(1:D,pos_m{k}),:);
 end
 %% Sample from the Predictive Posterior Distribution
 for iter = 1:T

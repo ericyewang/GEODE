@@ -21,5 +21,6 @@ else
         mu_hat = MU(pos_m{i}) + LAMBDA(pos_m{i},:)*(C_eta\(SIG.*Z(id_m(i),:)'))/SIGMAS;
         tmp = mvnrnd(mu_hat,C_M);
         y_m = [y_m tmp];
+        % y_m = [y_m mu_hat'];
     end
 end

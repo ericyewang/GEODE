@@ -1,16 +1,21 @@
-function [InD,adapt,u,tau,sigmaS,Lambda,mu] = GEODE_root(y,dim,opt)
+function [InD,adapt,u,tau,sigmaS,Lambda,mu] = GEODE_root(y,dim,opt,fast)
 % fit GEODE on dataset with no missing data
 %% Sufficient Statistics
+[N,D] = size(y); d = dim;
 mu = mean(y)';
 y_c = bsxfun(@minus,y,mu');
-[Lambda,S,~] = randPCA(y_c',dim);
+if fast
+    [Lambda,~,~] = randPCA(y_c',dim);
+else
+    [Lambda,~,~] = svd(y_c','econ');
+    Lambda = Lambda(:,1:dim);
+end
 YY = sum(y_c.^2,2);
 Z = bsxfun(@minus,y,mu')*Lambda;
 %% Preparation
 nb = opt(1); nc = opt(2); tol = opt(3);
 a = opt(4); a_sigma = opt(5); b_sigma = opt(6);
 alpha0 = opt(7); alpha1 = opt(8); stoptime = opt(9);
-N = size(y,1); [D,d] = size(Lambda);
 T = nb + nc;
 %% Store the data
 InD = cell(stoptime,1); adapt = zeros(stoptime,1); 
