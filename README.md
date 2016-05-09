@@ -1,4 +1,4 @@
-# GEODE 1.1 (matlab)
+# GEODE 1.2 (matlab)
 ### Scalable GEOmetric Density Estimation
 Ye (Eric) Wang
-last updated at 04/18/2016
+last updated at 05/09/2016
