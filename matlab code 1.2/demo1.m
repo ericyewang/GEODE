@@ -8,10 +8,12 @@ D = 50000; % ambient dimension
 d = 10; % intrinsic dimension
 n = 500; % sample size
 d_m = 5; % number of missing features
+
 Lam = 5*randn(D,d);
 sigS = abs(randn(1));
 eta = randn(n,d);
 y = eta*Lam'+sqrt(sigS)*randn(n,D);
+
 % Testing set
 n_test = 100;
 eta_test = randn(n_test,d);
