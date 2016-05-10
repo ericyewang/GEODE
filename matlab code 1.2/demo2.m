@@ -48,7 +48,7 @@ opt = GEODE_opt();
 disp('Potential scale reduction factor for sigma^2');
 gelman_rubin_2chain(sigmaS((opt(1)+1):(opt(1)+opt(2))),sigmaS1((opt(1)+1):(opt(1)+opt(2))))
 disp('Do both chain selects the same dimensions?')
-all(InD{opt(9)} == InD1{opt(9)})
+isequal(InD{opt(9)}, InD1{opt(9)})
 disp('Potential scale reduction factor for u');
 for i = InD{opt(9)}
 gelman_rubin_2chain(u(i,(opt(1)+1):(opt(1)+opt(2))),u1(i,(opt(1)+1):(opt(1)+opt(2))))
