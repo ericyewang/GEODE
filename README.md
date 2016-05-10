@@ -3,6 +3,8 @@
 Ye (Eric) Wang
 last updated at 05/10/2016
 
+All matlab files tested on Matlab 2015b.
+
 We have included 5 demos:
 <ul>
 <li>demo 1: 10000-dimensional data vectors, sample size 500, intrinsic dimension 10, without missing data.</li>
